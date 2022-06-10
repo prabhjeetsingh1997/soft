@@ -1,0 +1,16 @@
+@media only screen and (min-width : 1025px) and (max-width : 5000px) {
+	.mail-modal{width:56% !important;}
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+	.mail-modal{width:94% !important;}
+}
+@media only screen and (min-width : 481px) and (max-width : 767px){
+	.mail-modal{width:94% !important;}
+}
+@media only screen and (min-width : 301px) and (max-width : 480px){	
+	.mail-modal{width:94% !important;}
+}
+@media only screen and (min-width : 0px) and (max-width : 300px){
+	.mail-modal{width:94% !important;}
+}

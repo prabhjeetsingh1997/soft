@@ -1,0 +1,1048 @@
+	<!-- SELECT2 EXAMPLE -->
+			<div class="box box-default">
+				<div class="box-header with-border">
+				 <ul class="nav nav-tabs">
+				  <li <?php if($tab == '1'){echo 'class="active"';}?>><a data-toggle="tab" href="#home"> <h3 class="box-title"><b>PERSONAL DETAILS</b></h3></a></li>
+				  <li <?php if($tab == '2'){echo 'class="active"';}?>><a data-toggle="tab" id="official_detail" href="#menu1"><h3 class="box-title"><b>OFFICIAL DETAILS</b></h3> </a></li>
+				  <li <?php if($tab == '3'){echo 'class="active"';}?>><a data-toggle="tab" id="banking_detail" href="#menu2"><h3 class="box-title"><b>BANKING DETAILS</b></h3> </a></li>
+				  <li <?php if($tab == '4'){echo 'class="active"';}?>><a data-toggle="tab" id="attached_document" href="#menu3"><h3 class="box-title"><b>ATTACHED DOCUMENTS</b></h3> </a></li>
+				
+				</ul>
+				  <div class="box-tools pull-right">
+					<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+					<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+				  </div>
+				</div>
+				
+				 
+				<!-- /.box-header -->
+				<div id="status"></div>
+				<div class="tab-content">
+					<div id="home" class="tab-pane fade  <?php if($tab == '1'){echo 'in active';}?>">
+						<form role="form" method="POST" name="add_User" id="add_User">
+						 <input type="hidden" id="permAddCount" name="permAddCount" value="1"> 
+						 <input type="hidden" id="currAddCount" name="currAddCount" value="1"> 
+						 <input type="hidden" id="emNumbrCount" name="emNumbrCount" value="1"> 
+						 <input type="hidden" id="contactNumCount" name="contactNumCount" value="1"> 
+						 <input type="hidden" id="PerEmailCount" name="PerEmailCount" value="1"> 
+						 <input type="hidden" id="action" name="action" value="<?php echo $action; ?>"> 
+						<input type="hidden" name="userId" value="<?php echo $usrData['admin_id']; ?>" />
+							<div class="box-body">
+								<div class="row">
+									
+									<!-- Frist Line -->
+									
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Name </b></h4>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="title">Title</label>
+											<select class="form-control" name="name_prefix">
+											<option  >Mr.</option>
+											<option >Miss.</option>
+											<option >Mrs.</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="firstname">First Name</label>
+											<input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name" value="<?=$usrData['first_name']; ?>"/>
+										</div>
+									</div><!-- /.form-group -->
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Middle Name</label>
+											<input type="text" class="form-control" name="middle" id="middle" placeholder="Middle Name" value="<?=$usrData['middle_name']; ?>"/>
+										</div>
+									</div><!-- /.form-group -->
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">Last Name</label>
+											<input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name" value="<?=$usrData['last_name']; ?>"/>
+										</div>
+									</div>
+									
+									<!-- /.first line -->
+									
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	User Name</b></h4>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="form-group">
+											<label for="userName">User Name</label>
+											<input type="text" class="form-control" name="userName" id="userName" placeholder="User Name" value="<?php echo $usrData['username']; ?>" />
+										</div>
+									</div>
+											<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">User ID</b></h4>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="form-group">
+											<label for="adduserId">User ID</label>
+											<input type="text" class="form-control" name="adduserId" id="adduserId" placeholder="User ID" value="<?=$usrData['user_id']; ?>"/>
+										</div>
+									</div>
+								   <div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Password</b></h4>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="form-group">
+											<label for="userPhone">Password</label>
+											<input type="text" class="form-control" name="userPass" id="userPass" placeholder="Password" value="<?=$usrData['user_password']; ?>"/>
+										</div>
+									</div>
+									
+									<!-- /.second line -->
+									<div class="col-md-2">
+										<div class="form-group">
+									<h4  class="box-title"><b style="font-size: 17px;">	Contact Nos </b></h4>
+										</div>
+									</div>
+									<?php if($_GET['action']=='edit')
+									{?>
+									
+									<div class="items3">
+								  <?php   for($i=0; $i<count($phone_number);$i++)
+									{?>
+									<div id="Mobnumbbr_<?=$i+1;?>">
+									<?php if($i+1!=1){?>
+									<div class="col-md-2"><div class="form-group"></div></div>
+									<?php } ?>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="userPhone">Mobile</label>
+											<input type="number" class="form-control" name="userMobile[]" placeholder="Mobile Number" value="<?php echo $phone_number[$i]['contact_no']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Code</label>
+											<select class="form-control" name="code[]" placeholder="Code" value="<?php echo $phone_number[$i]['contact_no']; ?>">
+											<option value="Mobile">Mobile</option>
+											<option value="Home">Home</option>
+											<option value="Work">Work</option>
+											<option value="Main">Main</option>
+											<option value="WorkFax">Work Fax</option>
+											<option value="HomeFax">Home Fax</option>
+											<option value="Pager">Pager</option>
+											<option value="Other">Other</option></select>
+										</div>
+									</div>
+									<div class="col-md-3 v_hidden" >
+										<div class="form-group">
+											<label for="last">Enter valid Number</label>
+											<input type="text" class="form-control" name="phoneNum[]" placeholder="Enter Valid Number" value=""/>
+										</div>
+									</div>
+									</div>
+									<?php if($i+1==1){ ?>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="Mnumbbr" id="Mnumbbr" title="Add field" style="width:98px;"><img src="add-icon.png" style="width:28px;"></a>
+										</div>
+									</div>
+									<?php } else {?>
+									
+									<div class="col-md-1"> <div class="form-group"><label for="last">Remove</label>  <a class="delete" rel="2" href="javascript:void(0)" onclick="remove_item2(<?=$i;?>)"><i class="fa fa-fw fa-times-circle-o" style="color:red;"></i></a></div></div><?php }?>
+									
+									
+									<?php }} else{ ?>
+									
+								<div class="items3">
+									
+									<div id="Mobnumbbr_1">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="userPhone">Mobile</label>
+											<input type="number" class="form-control" name="userMobile[]" placeholder="Mobile Number" value="<?php echo $usrData['mobileno']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Code</label>
+											<select class="form-control" name="code[]" placeholder="Code" value=""><option value="Mobile">Mobile</option><option value="Home">Home</option><option value="Work">Work</option><option value="Main">Main</option><option value="WorkFax">Work Fax</option><option value="HomeFax">Home Fax</option><option value="Pager">Pager</option><option value="Other">Other</option></select>
+										</div>
+									</div>
+									<div class="col-md-3 v_hidden" >
+										<div class="form-group">
+											<label for="last">Enter valid Number</label>
+											<input type="text" class="form-control" name="phoneNum[]" placeholder="Enter Valid Number" value=""/>
+										</div>
+									</div>
+									</div>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="Mnumbbr"  id="Mnumbbr" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+									
+									</div>
+									<?php }?>
+									<!-- /.second line -->
+									<!-- /.third line -->
+									<?php if($_GET['action']=='edit')
+									{?>
+
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Email </b></h4>
+
+										</div>
+									</div> 
+									<div class="items4">
+								   <?php
+									$email_arr = json_decode($usrData['email_address']);
+									for($i=1; $i<=count($email_arr);$i++)
+									{
+									?>
+									<div id="Email_<?=$i;?>" >
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	 </b></h4>
+
+										</div>
+									</div> 
+									<div class="col-md-9">
+										<div class="form-group">
+											<label for="userEmail" >Email</label>
+											<input type="email" class="form-control" name="userEmail[]" placeholder="Email" value="<?php echo $email_arr[$i-1]; ?>" />
+										</div>
+									</div>
+								   
+									</div>
+									<?php if($i==1){?>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="emails" id="emails" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+									 <?php }
+									 else { ?>
+										 <div class="col-md-1"> <div class="form-group"><label for="last">Remove</label>  <a class="delete" rel="2" href="javascript:void(0)" onclick="remove_item1(<?=$i;?>)"><i class="fa fa-fw fa-times-circle-o" style="color:red;"></i></a></div></div>
+										 <?php }
+									 
+									 }
+									 
+									 ?>
+									</div>
+									
+									<?php } 
+									else {
+									?>
+										<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Email </b></h4>
+										</div>
+									</div> 
+									<div class="items4">
+								   
+									<div id="Email_1" >
+									<div class="col-md-9">
+										<div class="form-group">
+											<label for="userEmail" >Email</label>
+											<input type="email" class="form-control" name="userEmail[]" placeholder="Email" value="<?php echo $email_arr[$i]; ?>" />
+										</div>
+									</div>
+								   
+									</div>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="emails" id="emails" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+								   
+									</div>
+									 <?php } 
+									
+									?>		<!-- forth Line -->
+									
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Father Name </b></h4>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="title">Title</label>
+											<select class="form-control" name="faPrefix">
+											<option >Mr.</option>
+											<option >Miss.</option>
+											<option >Mrs.</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="name">First Name</label>
+											<input type="text" class="form-control" name="faFName" id="faFName" placeholder="Father Name" value="<?=$usrData['father_first_name']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Middle Name</label>
+											<input type="text" class="form-control" name="faMName" id="faMName" placeholder="Middle Name" value="<?=$usrData['father_middle_name']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">Last Name</label>
+											<input type="text" class="form-control" name="faLName" id="faLName" placeholder="Last Name" value="<?=$usrData['father_last_name']; ?>"/>
+										</div>
+									</div>
+									
+									<!-- /.forth line -->
+									<!-- /.fifth  line -->
+									
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Mother Name </b></h4>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="title">Title</label>
+											<select class="form-control" name="moPrefix">
+											<option >Mr.</option>
+											<option >Miss.</option>
+											<option >Mrs.</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="name">First Name</label>
+											<input type="text" class="form-control" name="MoFname" id="MoFname" placeholder="First Name" value="<?=$usrData['mother_first_name']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Middle Name</label>
+											<input type="text" class="form-control" name="MoMname" id="MoMname" placeholder="Middle Name" value="<?=$usrData['mother_middle_name']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">Last Name</label>
+											<input type="text" class="form-control" name="MoLname" id="MoLname" placeholder="Last Name" value="<?=$usrData['	mother_last_name']; ?>"/>
+										</div>
+									</div>
+									
+									<!-- /.fifth line -->
+									
+									<!-- /.six line -->
+									
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	D.O.B </b></h4>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<div class="form-group">
+											<div class="form-group">
+											<div class='input-group date' >
+											<input type='text' class="form-control" id="dob" name="dob"  
+											value="<?=$usrData['data_of_birth']; ?>"/>
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+											</div>
+										</div>
+										</div>
+									</div>
+									<!-- six Line -->
+									
+									<!-- /.seventh  line -->
+									<div class="col-md-2">
+										<div class="form-group">
+										<h4  class="box-title"><b style="font-size: 17px;">	Emergency Nos </b></h4>
+										</div>
+									</div>
+									<?php 
+								   if($_GET['action']=='edit')
+									{	?>
+									<div class="items2">
+									<?php   for($i=0; $i<count($phone_number1);$i++)
+									{?>
+									<div id="EmNumber_<?=$i+1;?>" >
+									 <?php if($i+1!=1){?>
+									<div class="col-md-2"><div class="form-group"></div></div>
+									<?php }?>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="userPhone">Mobile</label>
+											<input type="number" class="form-control" name="EmergencyMObNum[]" placeholder="Mobile Number" value="<?php echo $phone_number1[$i]['contact_no']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Code</label>
+		<!--									<input type="text" class="form-control" name="EmrCode[]" placeholder="Code" value=""/>
+		-->                                    <select class="form-control" name="EmrCode[]" placeholder="Code" value="<?php echo $phone_number1[$i]['contact_no']; ?>"><option value="Mobile">Mobile</option><option value="Home">Home</option><option value="Work">Work</option><option value="Main">Main</option><option value="WorkFax">Work Fax</option><option value="HomeFax">Home Fax</option><option value="Pager">Pager</option><option value="Other">Other</option></select>
+										</div>
+									</div>
+									<div class="col-md-3 v_hidden">
+										<div class="form-group">
+											<label for="last">Enter valid Number</label>
+											<select class="form-control" name="EmrPhoneNum[]" placeholder="Enter Valid Number" value=""><option value="Mobile">Mobile</option><option value="Home">Home</option><option value="Work">Work</option><option value="Main">Main</option><option value="WorkFax">Work Fax</option><option value="HomeFax">Home Fax</option><option value="Pager">Pager</option><option value="Other">Other</option></select>
+
+		<!--<input type="text" class="form-control" name="EmrPhoneNum[]" placeholder="Enter Valid Number" value=""/>-->
+										</div>
+									</div>
+									</div>
+									<?php if($i+1==1){ ?>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="Emnumbbr" id="Emnumbbr" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div></div>
+									  <?php } else {?>
+									
+									<div class="col-md-1"> <div class="form-group"><label for="last">Remove</label>  <a class="delete" rel="2" href="javascript:void(0)" onclick="remove_item2(<?=$i;?>)"><i class="fa fa-fw fa-times-circle-o" style="color:red;"></i></a></div></div>
+									
+									
+									</div><?php }?>
+									
+									
+									<?php }} else{ ?>
+									<div class="items2">
+									<div id="EmNumber_1" >
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="userPhone">Mobile</label>
+											<input type="number" class="form-control" name="EmergencyMObNum[]" placeholder="Mobile Number" value="<?php echo $phone_number1[$i]['contact_no']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="middle">Code</label>
+		<!--									<input type="text" class="form-control" name="EmrCode[]" placeholder="Code" value=""/>
+		-->                                    <select class="form-control" name="EmrCode[]" placeholder="Code" value="<?php echo $phone_number[$i]['contact_no']; ?>"><option value="Mobile">Mobile</option><option value="Home">Home</option><option value="Work">Work</option><option value="Main">Main</option><option value="WorkFax">Work Fax</option><option value="HomeFax">Home Fax</option><option value="Pager">Pager</option><option value="Other">Other</option></select>
+										</div>
+									</div>
+									<div class="col-md-3 v_hidden">
+										<div class="form-group">
+											<label for="last">Enter valid Number</label>
+											<select class="form-control" name="EmrPhoneNum[]" placeholder="Enter Valid Number" value=""><option value="Mobile">Mobile</option><option value="Home">Home</option><option value="Work">Work</option><option value="Main">Main</option><option value="WorkFax">Work Fax</option><option value="HomeFax">Home Fax</option><option value="Pager">Pager</option><option value="Other">Other</option></select>
+
+		<!--<input type="text" class="form-control" name="EmrPhoneNum[]" placeholder="Enter Valid Number" value=""/>-->
+										</div>
+									</div>
+									</div>
+									
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="Emnumbbr" id="Emnumbbr" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+									  
+									
+									</div>
+									
+									 <?php }?>
+									
+									
+									
+									<div class="col-md-2">
+										<div class="form-group">
+									<h4  class="box-title"><b style="font-size: 17px;">	Permanent Address </b></h4>
+										</div>
+									</div>
+							   <?php     
+									if($_GET['action']=='edit')
+									{	?>
+									<div class="items">
+									<?php   
+										for($i=0; $i<count($address_details);$i++)
+										{
+									?>
+									<div id="address_<?=$i+1;?>">
+									<?php if($i+1 != 1){ ?>
+									<div class="col-md-2"> <div class="form-group"></div> </div>
+									<?php } ?>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 1</label>
+											<input type="text" class="form-control" name="pramAdd1[]" placeholder="Address" value="<?php echo $address_details[$i]['address1']; ?>"/>
+										</div>
+									</div>
+									
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 2</label>
+											<input type="text" class="form-control" name="pramAdd2[]" placeholder="Address" value="<?php echo $address_details[$i]['address2']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="middle">City</label>
+											<input type="text" class="form-control" name="pramCity[]" placeholder="City" value="<?php echo $address_details[$i]['city']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">State</label>
+											<input type="text" class="form-control" name="pramState[]" placeholder="State" value="<?php echo $address_details[$i]['state']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Pin Code</label>
+											<input type="text" class="form-control" name="pramPin[]" placeholder="Code" value="<?php echo $address_details[$i]['pin_code']; ?>"/>
+										</div>
+									</div>
+									</div>
+									 <?php if($i+1==1){ ?>
+									
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="add_Morepram_add" id="add_Morepram_add" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+									 <?php } else {?>
+									
+									<div class="col-md-1"> <div class="form-group"><label for="last">Remove</label>  <a class="delete" rel="2" href="javascript:void(0)" onclick="remove_item2(<?=$i;?>)"><i class="fa fa-fw fa-times-circle-o" style="color:red;"></i></a></div></div><?php }?>
+									
+									
+									<?php }} else{ ?>
+									
+									 <div class="items">
+									
+									<div id="address_1">
+								   
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 1</label>
+											<input type="text" class="form-control" name="pramAdd1[]" placeholder="Address" value="<?php echo $address_details[$i]['address1']; ?>"/>
+										</div>
+									</div>
+									
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 2</label>
+											<input type="text" class="form-control" name="pramAdd2[]" placeholder="Address" value="<?php echo $address_details[$i]['address2']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="middle">City</label>
+											<input type="text" class="form-control" name="pramCity[]" placeholder="City" value="<?php echo $address_details[$i]['city']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">State</label>
+											<input type="text" class="form-control" name="pramState[]" placeholder="State" value="<?php echo $address_details[$i]['state']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Pin Code</label>
+											<input type="text" class="form-control" name="pramPin[]" placeholder="Code" value="<?php echo $address_details[$i]['pin_code']; ?>"/>
+										</div>
+									</div>
+									</div>
+									
+									
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="add_Morepram_add" id="add_Morepram_add" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+									</div>
+								
+								<?php }?>
+							   
+								<div class="col-md-2">
+										<div class="form-group">
+									<h4  class="box-title"><b style="font-size: 17px;">	Current Address </b></h4>
+										</div>
+										</div>
+										<?php 
+									if($_GET['action']=='edit')
+									{	?>
+									
+									<div class="items1">
+									<?php   for($i=0; $i<count($address_details1);$i++)
+									{?>
+									<div id="address_<?=$i+1;?>">
+									<?php if($i+1!=1){?>
+									<div class="col-md-2"> <div class="form-group"></div> </div>
+									<?php } ?>
+									<div class="col-md-2">
+
+										<div class="form-group">
+											<label for="userPhone">Address Line 1</label>
+											<input type="text" class="form-control" name="currAdd1[]" placeholder="Address" value="<?php echo $address_details1[$i]['address1']; ?>"/>
+										</div>
+									</div>
+									
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 2</label>
+											<input type="text" class="form-control" name="currAdd2[]" placeholder="Address" value="<?php echo $address_details1[$i]['address2']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="middle">City</label>
+											<input type="text" class="form-control" name="currCity[]" placeholder="City" value="<?php echo $address_details1[$i]['city']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">State</label>
+											<input type="text" class="form-control" name="currState[]" placeholder="State" value="<?php echo $address_details1[$i]['state']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Pin Code</label>
+											<input type="text" class="form-control" name="currPin[]" placeholder="Code" value="<?php echo $address_details1[$i]['pin_code']; ?>"/>
+										</div>
+									</div>
+									</div>
+									<?php if($i+1==1){ ?>
+									<div class="col-md-1">
+									
+										<div class="form-group">								
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="add_more_currAdd" id="add_more_currAdd" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+									<?php } else {?>
+									<div class="col-md-1"> <div class="form-group"><label for="last">Remove</label>  <a class="delete" rel="2" href="javascript:void(0)" onclick="remove_item2(<?=$i;?>)"><i class="fa fa-fw fa-times-circle-o" style="color:red;"></i></a></div></div>
+									<?php }?>
+									</div>
+									<?php }} else {
+										 ?>
+
+								  <div class="items1">
+							   
+									<div id="address2_1" >
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 1</label>
+											<input type="text" class="form-control" name="currAdd1[]" placeholder="Address" value="<?php echo $usrData['mobileno']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="userPhone">Address Line 2</label>
+											<input type="text" class="form-control" name="currAdd2[]" placeholder="Address" value="<?php echo $usrData['mobileno']; ?>"/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="middle">City</label>
+											<input type="text" class="form-control" name="currCity[]" placeholder="City" value=""/>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="last">State</label>
+											<input type="text" class="form-control" name="currState[]" placeholder="State" value=""/>
+										</div>
+									</div>
+									<div class="col-md-1">
+										<div class="form-group">
+											<label for="last">Pin Code</label>
+											<input type="text" class="form-control" name="currPin[]" placeholder="Code" value=""/>
+										</div>
+									</div>
+									</div>
+									<div class="col-md-1">
+									
+										<div class="form-group">								
+											<label for="last">Add More</label>
+											<a href="javascript:void(0);" class="add_more_currAdd" id="add_more_currAdd" title="Add field" style="width:98px;" ><img src="add-icon.png" style="width:28px;"/></a>
+										</div>
+									</div>
+								   
+								</div>
+								<?php }?>
+					</div>
+					
+					</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+						</div>
+					</div>
+						
+					</form>
+					</div>
+				
+				<div id="menu1" class="tab-pane fade  <?php if($tab == '2'){echo 'in active';}?> ">
+
+					<form method="POST" name="official_detailfrm" id="official_detailfrm">
+				 	<div class="box-body">
+						<div class="row">
+							
+								<div class="col-md-2">
+								<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">Employee ID</b></h4>
+								</div>
+							</div>
+						
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">Employee ID</label>
+									<input type="text" class="form-control " name="empId" id="empId" placeholder="Employee ID" value="<?php echo $_SESSION['employee_id']; ?>" readonly />
+								</div>
+							
+							</div>
+							
+							<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Designation</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label>Designation</label>
+									<select class="form-control" name="designation">
+									<option value="">Select</option>
+									<option value="Sales" <?php if($usrData['designation'] == 'Sales'){echo "selected";}?>>Sales</option>
+									<option value="Manager" <?php if($usrData['designation'] == 'Manager'){echo "selected";}?>>Manager</option>
+									<option value="Entry_Operator" <?php if($usrData['designation'] == 'Entry_Operator'){echo "selected";}?>>Entry Operator</option>
+									
+									</select>
+								</div>
+							</div><!-- /.form-group -->
+							
+							<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Department</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="userPhone">Department</label>
+									<select class="form-control" name="department">
+									<option value="">Select</option>
+									<option value="Sales" <?php if($usrData['department'] == 'Sales'){echo "selected";}?>>Sales</option>
+									<option value="Marketing" <?php if($usrData['department'] == 'Marketing'){echo "selected";}?>>Marketing</option>
+									
+									</select>
+								</div>
+							</div><!-- /.form-group -->
+							
+							<!-- /.first line -->
+							
+							<!-- /.second line -->
+							<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Joining Date</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<div class="form-group">
+									<div class='input-group date' >
+									<input type='text' class="form-control emp_datePicker" name="joingDate" id="joingDate" value="<?php echo date('j M Y',strtotime($usrData['joining_date']));?>"/>
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+									</div>
+								</div>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Termination Date</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<div class="form-group">
+									<div class='input-group date' >
+									<input type='text' class="form-control emp_datePicker" name="terminationDate" id="terminationDate" value="<?php echo date('j M Y',strtotime($usrData['termination_date']));?>"/>
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+									</div>
+								</div>
+								</div>
+							</div>
+							<!-- /.third line -->
+										
+					
+						  	<!-- forth Line -->
+													
+						</div>
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary" name="submit" id="submit">Save</button>
+					</div>
+				</form>
+				</div>
+				<div id="menu2" class="tab-pane fade  <?php if($tab == '3'){echo 'in active';}?>">
+					<form role="form" method="POST" name="banking_detailFrm" id="banking_detailFrm">
+					<div class="box-body">
+						<div class="row">
+							
+							<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">PAN No.</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">PAN No.</label>
+									<input type="text" class="form-control " name="panNum" id="panNum" placeholder="PAN No." value=""/>
+								</div>
+							</div>
+						<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Account No.</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">Account No.</label>
+									<input type="text" class="form-control " name="accNumber" id="accNumber" placeholder="Account No." value=""/>
+								</div>
+							</div>
+						<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Account Name</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">Account Name</label>
+									<input type="text" class="form-control " name="accName" id="accName" placeholder="Account Name" value=""/>
+								</div>
+							</div>
+						<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Bank</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">Bank</label>
+									<input type="text" class="form-control " name="bank" id="bank" placeholder="Bank" value=""/>
+								</div>
+							</div>
+						<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">Branch</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">Branch</label>
+									<input type="text" class="form-control " name="branch" id="branch" placeholder="Branch" value=""/>
+								</div>
+							</div>
+						<div class="col-md-2">
+								<div class="form-group">
+								<h4  class="box-title"><b style="font-size: 17px;">IFSC</b></h4>
+								</div>
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label for="search">IFSC</label>
+									<input type="text" class="form-control " name="ifsc" id="ifsc" placeholder="IFSC" value=""/>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+						</div>
+					
+				</form>
+			
+				</div>
+				<div id="menu3" class="tab-pane fade  <?php if($tab == '4'){echo 'in active';}?>">
+					<form role="form" method="POST" name="attach_doc" id="attach_doc">
+					 <input type="hidden" id="bioData" name="bioData" value=""> 
+					 <input type="hidden" id="eduProof" name="eduProof" value=""> 
+					 <input type="hidden" id="appoint_letter" name="appoint_letter" value=""> 
+					 <input type="hidden" id="pan_card" name="pan_card" value=""> 
+					 <input type="hidden" id="photo" name="photo" value=""> 
+					 <input type="hidden" id="addProof" name="addProof" value=""> 
+					 <input type="hidden" id="aadharCard" name="aadharCard" value=""> 
+					 <input type="hidden" id="passprt" name="passprt" value=""> 
+					</form>
+				
+					<div class="box-body">
+						<div class="row">
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">Biodata </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="bio_upload" name="bio_upload" type="file" multiple>
+									<input type="hidden" name="biofileName" id="biofileName"/>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+						</div><!-- /.form-group -->
+						<div class="col-md-4">
+							<div id="bio_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4 class="box-title"><b style="font-size: 17px;">	Educational Proof </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="eduProof_upload" name="eduProof_upload" type="file" multiple>
+									<input type="hidden" name="edufileName" id="edufileName"/>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+							
+						</div><!-- /.form-group -->
+						<div class="col-md-4">
+							<div id="edu_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">	Appointment Letter </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="appointupd_letter" name="appointupd_letter" type="file" multiple>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+							
+						</div><!-- /.form-group -->
+						<div class="col-md-4">
+							<div id="appoint_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">	PAN Card </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="pan_upload" name="pan_upload" type="file" multiple>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+							
+						</div><!-- /.form-group -->
+						
+						<div class="col-md-4">
+							<div id="pan_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">	Photo </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="photo_upload" name="photo_upload" type="file" multiple>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+							
+						</div>
+						<div class="col-md-4">
+							<div id="photo_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">Address Proof</b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="addressProof_upload" name="addressProof_upload" type="file" multiple>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+							
+						</div>
+						<div class="col-md-4">
+							<div id="address_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">Adhaar Card </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="adhar_upload" name="adhar_upload" type="file" multiple>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<div id="adhar_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						
+						<div class="col-md-2">
+							<div class="form-group">
+							<h4  class="box-title"><b style="font-size: 17px;">Passport </b></h4>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<form>
+								<div class="form-group">
+									<input class="file_upload" id="pass_upload" name="pass_upload" type="file" multiple>
+									<p class="help-block text-danger"></p>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<div id="passport_uploaded" style="height:60px;"></div>
+						</div>
+						<div style="clear:both;"></div>
+						
+					</div>
+				</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary" name="submitDocs" id="submitDocs">Submit</button>
+					</div>
+					</div>
+				</div>
+			</div>
+			
+			

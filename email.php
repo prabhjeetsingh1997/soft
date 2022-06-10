@@ -1,0 +1,1 @@
+<?phperror_reporting(E_ALL);$sent = mail('singhanil221@gmail.com','test email 3','this is test email 33333333333');if($sent){	echo 'Email sent';}else{	echo 'There is some issue';}?>

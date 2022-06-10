@@ -1,0 +1,59 @@
+<div class="container" id="pdf_html_page">
+        <div class="row">
+          <div style="position: absolute; right: 10px; top: 5px;">Receipt no.-00{{ id }} </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+         <img src="https://www.mrscapital.in/images/logo.png" class="brand-img">
+         <div style="float: right;max-width: 350px; text-align: justify;">Bulding No-6 2nd Floor, Jwalaheri Market, Paschim Vihar, New Delhi-110063, India.</div>
+         <div style="float: right;max-width: 350px; text-align: justify;">GSTIN-07AACCL4198F1ZE</div>
+        </div>
+        <hr>
+        <div class="row" style="margin-top: 50px;">
+          <strong><span style="font-size: 22px;">Thank you for registering at Mrs Capital. </span></strong>
+        </div>
+        <div class="row">
+          <div style="padding-top: 20px;">
+            <span style="font-size: 18px;"><b>{{ first_name }} {{ last_name }}</b></span>
+          </div>
+          <div style="padding-top: 10px;">
+            <span><b>Age:</b><span> {{ age }} Years</span></span>
+          </div>
+          <div style="padding-top: 10px;">
+            <span><b>Email:</b><span> {{ email }}</span></span>
+          </div>
+          <div style="padding-top: 10px;">
+            <span><b>Mob:</b><span>{{ contact }}</span></span>
+          </div>
+          <div style="padding-top: 10px;">
+            <span><b>Address:</b><span>{{ address_line_1 }} ,  {{address_line_2}} , {{ city }} , {{ state }} , {{ postal_code }}</span></span>
+          </div>
+        </div>
+        <div class="row" style="text-align: center;">
+          <h1>PAYMENT RECIEPT</h1>
+        </div>
+        <div class="row">
+          <table style=" border: 1px solid black;border-collapse: collapse;width: 100%;height:100%;">
+            <tr>
+            <th height="50" width="400" style=" border: 1px solid black;border-collapse: collapse;">Particulars</th>
+            <th height="50" style="border: 1px solid black;border-collapse: collapse;">Amount</th>
+            <th height="50" style=" border: 1px solid black;border-collapse: collapse;">Transaction id</th>
+            </tr>
+            <tr>
+              <td height="50" width="50" style=" border: 1px solid black;border-collapse: collapse;">Registration Fee for the Show to appear for the entry level auditions.</td>
+              <td height="50" style=" border: 1px solid black;border-collapse: collapse;">{{ amount }} -/</td>
+              <td height="50" style=" border: 1px solid black;border-collapse: collapse;">{{ reference_id }}</td>
+            </tr>
+            
+          </table>
+          <div style="color: red;text-align: center;">*this fee is non-refundable and non-amendable.</div>
+        </div>
+        <div class="row" style="margin-top: 100px;">
+            <strong>NOTE:</strong>
+            <ul>
+              <li>Registration Amount is Rs.1500/- and GST(18%) Amount is Rs.270/-.</li>
+              <li>Please bring this receipt with you at the time of auditions.</li>
+              <li>Hard Copy is not required.</li>
+              <li>You will be govern about the audition date & timings through whatsapp or call.</li>
+            </ul>
+        </div>
+</div>
